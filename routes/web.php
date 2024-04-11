@@ -6,6 +6,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('ola/{text}', function ($text){
-    echo 'Olá, ' . $text;
-});
+Route::get('/clients', [\App\Http\Controllers\ClientControler::Class,'index']);

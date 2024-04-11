@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Client;
+use Illuminate\Http\Request;
+
 
 class ClientController extends Controller
 {
@@ -12,8 +13,15 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Post::all();
-        return view('clients.index',compact('clients'));
+        public function index()
+        {
+            $clients = client::all();
+
+            foreach ($clients as $client) {
+                dd($client->Client::class);
+            }
+        }
+    
     }
 
     /**
@@ -21,13 +29,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'tameClient' => 'required|max:255',
-            'bcnpj' => 'required|max:14',
-          ]);
-          Post::create($request->all());
-          return redirect()->route('clients.index')
-            ->with('success','Post created successfully.');
+        //
     }
 
     /**
